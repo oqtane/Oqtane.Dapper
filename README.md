@@ -18,3 +18,4 @@ Server\Repository
 
 Server\Scripts
 - SQL script files to provision table (naming convention is important)
+- SQL script files must be Embedded Resources
