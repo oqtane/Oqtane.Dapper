@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <Version>1.0.0</Version>
+    <Product>MyCompany.Module.Dapper</Product>
+    <Authors>MyCompany</Authors>
+    <Company>MyCompany</Company>
+    <Description>POC using Client and Scripts</Description>
+    <Copyright>MyCompany</Copyright>
+    <AssemblyName>MyCompany.Module.Dapper.Server.Oqtane</AssemblyName>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\MyCompany.Module.Dapper.1.0.0.sql" />
+    <None Remove="Scripts\MyCompany.Module.Dapper.1.0.1.sql" />
+    <None Remove="Scripts\MyCompany.Module.Dapper.Uninstall.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <EmbeddedResource Include="Scripts\MyCompany.Module.Dapper.1.0.0.sql" />
+	  <EmbeddedResource Include="Scripts\MyCompany.Module.Dapper.1.0.1.sql" />
+	  <EmbeddedResource Include="Scripts\MyCompany.Module.Dapper.Uninstall.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.5" />
+	<PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
+	<PackageReference Include="Dapper" Version="2.0.151" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\MyCompany.Module.Dapper.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Oqtane.Server"><HintPath>..\..\oqtane.framework\Oqtane.Server\bin\Debug\net7.0\Oqtane.Server.dll</HintPath></Reference>
+    <Reference Include="Oqtane.Shared"><HintPath>..\..\oqtane.framework\Oqtane.Server\bin\Debug\net7.0\Oqtane.Shared.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>

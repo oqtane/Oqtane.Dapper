@@ -1,0 +1,70 @@
+@using MyCompany.Module.Dapper.Services
+@using MyCompany.Module.Dapper.Models
+
+@namespace MyCompany.Module.Dapper
+@inherits ModuleBase
+@inject IClientService ClientService
+@inject NavigationManager NavigationManager
+
+@if (_Clients == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <ActionLink Action="Add" Security="SecurityAccessLevel.Edit" Text="Add Client" ResourceKey="Add" />
+    <br />
+    <br />
+    @if (@_Clients.Count != 0)
+    {
+        <Pager Items="@_Clients">
+            <Header>
+                <th style="width: 1px;">&nbsp;</th>
+                <th style="width: 1px;">&nbsp;</th>
+                <th>Name</th>
+            </Header>
+            <Row>
+                <td><ActionLink Action="Edit" Parameters="@($"id=" + context.ClientId.ToString())" ResourceKey="Edit"  /></td>
+                <td><ActionDialog Header="Delete Client" Message="Are You Sure You Wish To Delete This Client?" Action="Delete" Security="SecurityAccessLevel.Edit" Class="btn btn-danger" OnClick="@(async () => await Delete(context))" ResourceKey="Delete"  /></td>
+                <td>@context.Name</td>
+            </Row>
+        </Pager>
+    }
+    else
+    {
+        <p>No Clients Exist</p>
+    }
+}
+
+@code {
+    List<Models.Client> _Clients;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _Clients = await ClientService.GetClientsAsync();
+        }
+        catch (Exception ex)
+        {
+            await logger.LogError(ex, "Error Loading Client {Error}", ex.Message);
+            AddModuleMessage("Error Loading Clients", MessageType.Error);
+        }
+    }
+
+    private async Task Delete(Models.Client Client)
+    {
+        try
+        {
+            await ClientService.DeleteClientAsync(Client.ClientId);
+            await logger.LogInformation("Client Deleted {Client}", Client);
+            _Clients = await ClientService.GetClientsAsync();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            await logger.LogError(ex, "Error Deleting Client {Client} {Error}", Client, ex.Message);
+            AddModuleMessage("Error Deleing Client", MessageType.Error);
+        }
+    }
+}

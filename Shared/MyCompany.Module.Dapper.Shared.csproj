@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>    
+    <Version>1.0.0</Version>
+    <Product>MyCompany.Module.Dapper</Product>
+    <Authors>MyCompany</Authors>
+    <Company>MyCompany</Company>
+    <Description>POC using Client and Scripts</Description>
+    <Copyright>MyCompany</Copyright>
+    <AssemblyName>MyCompany.Module.Dapper.Shared.Oqtane</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Oqtane.Shared"><HintPath>..\..\oqtane.framework\Oqtane.Server\bin\Debug\net7.0\Oqtane.Shared.dll</HintPath></Reference>
+  </ItemGroup>
+
+</Project>
