@@ -1,8 +1,10 @@
 # Oqtane.Dapper
 POC using Dapper and SQL Scripts
 
-Package\debug.cmd
-> notice addition of Dapper aseembly deployment
+
+Package
+> debug.cmd - notice addition of Dapper assembly for deployment
+> nuspec - notice addition Dapper assembly
 
 Server\MyCompany.Module.Dapper.Server.csproj
 > addition of Dapper package
