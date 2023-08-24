@@ -3,11 +3,11 @@ POC using Dapper and SQL Scripts
 
 
 Package\
-- debug.cmd - notice addition of Dapper assembly for deployment
-- nuspec - notice addition Dapper assembly
+- debug.cmd - addition of Dapper assembly for deployment
+- nuspec - addition Dapper assembly
 
-Server\MyCompany.Module.Dapper.Server.csproj
-- addition of Dapper package
+Server\
+- csproj - addition of Dapper package
 
 Server\Manager
 - Manager class implements IInstallable to execute SQL scripts
