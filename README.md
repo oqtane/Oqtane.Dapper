@@ -2,7 +2,7 @@
 POC using Dapper and SQL Scripts
 
 
-Package
+Package\
 - debug.cmd - notice addition of Dapper assembly for deployment
 - nuspec - notice addition Dapper assembly
 
